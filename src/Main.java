@@ -74,7 +74,7 @@ public class Main {
             else {
                 System.out.println("Unknown command: " + input);
             }
-
+            System.out.println("csoosak");
         }
     }
 }
