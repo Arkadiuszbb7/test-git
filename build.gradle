@@ -3,26 +3,10 @@ plugins {
     id 'application'
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
-// Our code lives in src/ (IntelliJ layout), not the default src/main/java
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src']
-        }
-    }
-}
-
 application {
     mainClass = 'Main'
 }
 
-// Let Scanner read what we type in the terminal
-run {
+tasks.withType(JavaExec).configureEach {
     standardInput = System.in
 }
