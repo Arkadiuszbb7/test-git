@@ -31,3 +31,7 @@ bin/
 ### Local IntelliJ settings ###
 .idea/
 *.iml
+
+### Gradle ###
+.gradle/
+build/
