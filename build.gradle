@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'Main'
+}
+
+tasks.withType(JavaExec).configureEach {
+    standardInput = System.in
+}

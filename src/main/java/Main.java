@@ -1,14 +1,16 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<Task> tasks = new ArrayList<>();
         System.out.println("Todo app. Type 'exit' to quit.");
         while (true) {
             System.out.print("> ");
-            String input = scanner.nextLine();
+            String input = reader.readLine();
             if (input.equals("exit")) {
                 System.out.println("Bye!");
                 break;
