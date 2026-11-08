@@ -1,16 +1,12 @@
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        CommandSource source = new ConsoleCommandSource();
         TaskManager manager = new TaskManager();
         System.out.println("Todo app. Type 'exit' to quit.");
         while (true) {
-            System.out.print("> ");
-            String input = reader.readLine();
+            String input = source.nextCommand();
             if (input.equals("exit")) {
                 System.out.println("Bye!");
                 break;
