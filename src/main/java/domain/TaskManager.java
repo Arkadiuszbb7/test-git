@@ -1,14 +1,16 @@
+package domain;
+
 import java.util.ArrayList;
 
-class TaskManager {
+public class TaskManager {
     private ArrayList<Task> tasks = new ArrayList<>();
 
-    void addTask(String title) {
+    public void addTask(String title) {
         tasks.add(new Task(title));
         System.out.println("Added: " + title);
     }
 
-    void printTasks() {
+    public void printTasks() {
         for (int i = 0; i < tasks.size(); i++) {
             String mark;
             if (tasks.get(i).done) {
@@ -20,7 +22,7 @@ class TaskManager {
         }
     }
 
-    void markDone(String numberText) {
+    public void markDone(String numberText) {
         try {
             int number = Integer.parseInt(numberText);
             if (number < 1 || number > tasks.size()) {
@@ -34,7 +36,7 @@ class TaskManager {
         }
     }
 
-    void deleteTask(String numberText) {
+    public void deleteTask(String numberText) {
         try {
             int number = Integer.parseInt(numberText);
             if (number < 1 || number > tasks.size()) {

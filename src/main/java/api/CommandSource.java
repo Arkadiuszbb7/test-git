@@ -1,5 +1,7 @@
+package api;
+
 import java.io.IOException;
 
-interface CommandSource {
+public interface CommandSource {
     String nextCommand()throws IOException;
 }

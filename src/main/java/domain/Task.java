@@ -1,3 +1,5 @@
+package domain;
+
 class Task {
     String title;
     boolean done;
