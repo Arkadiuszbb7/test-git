@@ -1,9 +1,9 @@
 package api;
 
 import domain.TaskManager;
-
+import domain.Task;
 import java.io.IOException;
-
+import java.util.ArrayList;
 public class ConsoleApi {
     private final CommandSource source;
     private final TaskManager manager;
@@ -24,9 +24,20 @@ public class ConsoleApi {
                 System.out.println("Bye!");
                 break;
             } else if (input.startsWith("add ")) {
-                manager.addTask(input.substring(4));
+               String title = input.substring(4);
+               manager.addTask(title);
+               System.out.println("Added: " + title);
             } else if (input.equals("list")) {
-                manager.printTasks();
+                ArrayList<Task> tasks = manager.getTasks();
+                for (int i = 0; i < tasks.size(); i++) {
+                    String mark;
+                    if (tasks.get(i).isDone()) {
+                        mark = "[x]";
+                    } else {
+                        mark = "[ ]";
+                    }
+                    System.out.println((i + 1) + ". " + mark + " " + tasks.get(i).getTitle());
+                }
             } else if (input.startsWith("done ")) {
                 manager.markDone(input.substring(5));
             } else if (input.startsWith("delete ")) {

@@ -7,19 +7,11 @@ public class TaskManager {
 
     public void addTask(String title) {
         tasks.add(new Task(title));
-        System.out.println("Added: " + title);
+
     }
 
-    public void printTasks() {
-        for (int i = 0; i < tasks.size(); i++) {
-            String mark;
-            if (tasks.get(i).done) {
-                mark = "[x]";
-            } else {
-                mark = "[ ]";
-            }
-            System.out.println((i + 1) + ". " + mark + " " + tasks.get(i).title);
-        }
+    public ArrayList<Task> getTasks(){
+        return new ArrayList<>(tasks);
     }
 
     public void markDone(String numberText) {
