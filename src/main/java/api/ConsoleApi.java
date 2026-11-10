@@ -1,5 +1,5 @@
 package api;
-
+import domain.TaskNotFoundException;
 import domain.TaskManager;
 import domain.Task;
 import java.io.IOException;
@@ -38,10 +38,28 @@ public class ConsoleApi {
                     }
                     System.out.println((i + 1) + ". " + mark + " " + tasks.get(i).getTitle());
                 }
-            } else if (input.startsWith("done ")) {
-                manager.markDone(input.substring(5));
+             } else if (input.startsWith("done ")) {
+                String numberText = input.substring(5);
+                try {
+                    int number = Integer.parseInt(numberText);
+                    Task task = manager.markDone(number);
+                    System.out.println("Done: " + task.getTitle());
+                } catch (NumberFormatException e) {
+                    System.out.println("Not a number: " + numberText);
+                } catch (TaskNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (input.startsWith("delete ")) {
-                manager.deleteTask(input.substring(7));
+                String numberText = input.substring(7);
+                try {
+                    int number = Integer.parseInt(numberText);
+                    Task task = manager.deleteTask(number);
+                    System.out.println("Deleted: " + task.getTitle());
+                } catch (NumberFormatException e) {
+                    System.out.println("Not a number: " + numberText);
+                } catch (TaskNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
             } else {
                 System.out.println("Unknown command: " + input);
             }

@@ -14,31 +14,19 @@ public class TaskManager {
         return new ArrayList<>(tasks);
     }
 
-    public void markDone(String numberText) {
-        try {
-            int number = Integer.parseInt(numberText);
-            if (number < 1 || number > tasks.size()) {
-                System.out.println("No task with number " + number);
-            } else {
-                tasks.get(number - 1).done = true;
-                System.out.println("Done: " + tasks.get(number - 1).title);
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Not a number: " + numberText);
+    public Task markDone(int number) {
+        if (number < 1 || number > tasks.size()) {
+            throw new TaskNotFoundException(number);
         }
+        Task task = tasks.get(number - 1);
+        task.done = true;
+        return task;
     }
 
-    public void deleteTask(String numberText) {
-        try {
-            int number = Integer.parseInt(numberText);
-            if (number < 1 || number > tasks.size()) {
-                System.out.println("No task with number " + number);
-            } else {
-                Task removed = tasks.remove(number - 1);
-                System.out.println("Deleted: " + removed.title);
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Not a number: " + numberText);
+    public Task deleteTask(int number) {
+        if (number < 1 || number > tasks.size()) {
+            throw new TaskNotFoundException(number);
         }
+        return tasks.remove(number - 1);
     }
 }
