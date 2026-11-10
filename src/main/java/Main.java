@@ -9,6 +9,7 @@ public class Main {
         CommandSource source = new ConsoleCommandSource();
         TaskManager manager = new TaskManager();
         ConsoleApi api = new ConsoleApi(source, manager);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("Shutting down...")));
         api.run();
     }
 
