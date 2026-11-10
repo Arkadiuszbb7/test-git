@@ -17,6 +17,9 @@ public class ConsoleApi {
         System.out.println("Todo app. Type 'exit' to quit.");
         while (true) {
             String input = source.nextCommand();
+            if(input == null) {
+                break;
+            }
             if (input.equals("exit")) {
                 System.out.println("Bye!");
                 break;
