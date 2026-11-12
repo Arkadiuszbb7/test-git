@@ -5,10 +5,10 @@ import domain.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 public class ConsoleApi {
-    private final CommandSource source;
+    private final ConsoleCommandSource source;
     private final TaskManager manager;
 
-    public ConsoleApi(CommandSource source, TaskManager manager) {
+    public ConsoleApi(ConsoleCommandSource source, TaskManager manager) {
         this.source = source;
         this.manager = manager;
     }
