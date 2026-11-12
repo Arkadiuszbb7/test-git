@@ -2,21 +2,26 @@ package api;
 import domain.TaskNotFoundException;
 import domain.TaskManager;
 import domain.Task;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 public class ConsoleApi {
-    private final ConsoleCommandSource source;
+    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final TaskManager manager;
 
-    public ConsoleApi(ConsoleCommandSource source, TaskManager manager) {
-        this.source = source;
+    public ConsoleApi(TaskManager manager) {
+
         this.manager = manager;
     }
-
+    private String nextCommand() throws IOException {
+        System.out.print("> ");
+        return reader.readLine();
+    }
     public void run() throws IOException {
         System.out.println("Todo app. Type 'exit' to quit.");
         while (true) {
-            String input = source.nextCommand();
+            String input = nextCommand();
             if(input == null) {
                 break;
             }
